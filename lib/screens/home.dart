@@ -8,6 +8,7 @@ import 'package:shutt_app/widgets/rideInfo1.dart';
 import 'package:shutt_app/widgets/rideInfo2.dart';
 import 'package:shutt_app/widgets/rideOptions.dart';
 import 'package:provider/provider.dart';
+import 'package:geolocator/geolocator.dart';
 
 import '../models/Bus.dart';
 import '../services/dbService.dart';
@@ -40,38 +41,56 @@ class _HomeState extends State<Home> {
     // TODO: implement initState
     super.initState();
     getUserLocation();
+    //getUserCurrentLocation();
+  }
+
+  Future<Position> getUserCurrentLocation() async {
+    await Geolocator.requestPermission().then((value){
+    }).onError((error, stackTrace) async {
+      await Geolocator.requestPermission();
+      print("ERROR"+error.toString());
+    });
+    return await Geolocator.getCurrentPosition();
   }
 
   getUserLocation() async {
-    bool _serviceEnabled;
-    PermissionStatus _permissionGranted;
-    LocationData _locationData;
+    try {
+      bool _serviceEnabled;
+      PermissionStatus _permissionGranted;
+      LocationData _locationData;
 
-    _serviceEnabled = await location.serviceEnabled();
-    if (!_serviceEnabled) {
-      _serviceEnabled = await location.requestService();
+      _serviceEnabled = await location.serviceEnabled();
       if (!_serviceEnabled) {
-        return;
+        _serviceEnabled = await location.requestService();
+        if (!_serviceEnabled) {
+          return;
+        }
       }
-    }
 
-    _permissionGranted = await location.hasPermission();
-    if (_permissionGranted == PermissionStatus.denied) {
-      _permissionGranted = await location.requestPermission();
-      if (_permissionGranted != PermissionStatus.granted) {
-        return;
+      _permissionGranted = await location.hasPermission();
+      if (_permissionGranted == PermissionStatus.denied) {
+        _permissionGranted = await location.requestPermission();
+        if (_permissionGranted != PermissionStatus.granted) {
+          return;
+        }
       }
-    }
-    LocationData userPosition = await location.getLocation();
-    print("loading..........");
-    setState(() {
-      initialCameraPosition = CameraPosition(
-          target: LatLng(userPosition.latitude ?? 5.6506,
-              userPosition.longitude ?? -0.1962),
-          zoom: 15.5);
+      LocationData userPosition = await location.getLocation();
+      print("loading..........");
+      setState(() {
+        initialCameraPosition = CameraPosition(
+            target: LatLng(userPosition.latitude ?? 5.6506,
+                userPosition.longitude ?? -0.1962),
+            zoom: 15.5);
 
-      cameraPositionSet = true;
-    });
+        cameraPositionSet = true;
+      });
+
+      getUserCurrentLocation();
+
+
+    } catch (e) {
+      print(e.toString());
+    }
   }
 
   addBusMarkers() async {
@@ -155,6 +174,7 @@ class _HomeState extends State<Home> {
                                 color: appColors.green),
                             onPressed: () async {
                               await map.animateCamera();
+                              //await getUserCurrentLocation();
                             },
                           )
                         ]),
