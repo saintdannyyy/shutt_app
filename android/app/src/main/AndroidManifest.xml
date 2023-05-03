@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.shutt_app">
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!--<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />-->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
    <application
@@ -36,7 +36,7 @@
             android:value="2" />
         <meta-data 
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDJ-MpXAKSv_VWw7-V49UL2A0X1FXUNXEc"/>
+            android:value="AIzaSyCVXBtY458MYQ6oRqvZI5lsC6miGIuNQPk"/>
     </application>
     <queries>
         <!-- If your app checks for SMS support -->
