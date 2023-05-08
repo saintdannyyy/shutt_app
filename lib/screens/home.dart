@@ -173,8 +173,8 @@ class _HomeState extends State<Home> {
                             child: const Icon(Icons.my_location,
                                 color: appColors.green),
                             onPressed: () async {
-                              //await map.animateCamera();
-                              await getUserCurrentLocation();
+                              await map.animateCamera();
+                              //await getUserLocation();
                             },
                           )
                         ]),
