@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shutt_app/models/RideAlt.dart';
 import 'package:shutt_app/services/dbService.dart';
 import 'package:shutt_app/styles/colors.dart';
-import 'package:shutt_app/widgets/NavigationDrawer.dart';
+import 'package:shutt_app/widgets/NavigationDrawer.dart' as nav;
 import 'package:shutt_app/widgets/historyCard.dart';
 
 class RideHistory extends StatefulWidget {
@@ -50,7 +50,7 @@ class _SettingsState extends State<RideHistory> {
         backgroundColor: Colors.transparent,
         iconTheme: const IconThemeData(color: appColors.green),
       ),
-      drawer: const NavigationDrawer(),
+      drawer: const nav.NavigationDrawer(),
       body: SafeArea(
           child: rideHistory.isEmpty
               ? const Center(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shutt_app/styles/colors.dart';
-import 'package:shutt_app/widgets/NavigationDrawer.dart';
+import 'package:shutt_app/widgets/NavigationDrawer.dart' as nav;
 
 class Support extends StatefulWidget {
   const Support({Key? key}) : super(key: key);
@@ -20,7 +20,7 @@ class _SettingsState extends State<Support> {
         backgroundColor: Colors.transparent,
         iconTheme: const IconThemeData(color: appColors.darkGreen),
       ),
-      drawer: const NavigationDrawer(),
+      drawer: const nav.NavigationDrawer(),
       body: const Center(
         child: Text("Support Screen"),
       ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shutt_app/styles/colors.dart';
-import 'package:shutt_app/widgets/NavigationDrawer.dart';
+import 'package:shutt_app/widgets/NavigationDrawer.dart' as nav;
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -18,7 +18,7 @@ class _ProfileState extends State<Profile> {
         iconTheme: const IconThemeData(color: appColors.darkGreen),
         elevation: 0,
       ),
-      drawer: const NavigationDrawer(),
+      drawer: const nav.NavigationDrawer(),
       body: const Center(child: Text("Profile Screen")),
     );
   }

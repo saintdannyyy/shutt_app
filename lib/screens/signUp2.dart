@@ -9,6 +9,7 @@ import 'package:shutt_app/widgets/headingText.dart';
 import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
 import 'package:shutt_app/services/authService.dart';
+import 'package:firebase_admin/firebase_admin.dart';
 
 class SignUp2 extends StatefulWidget {
   const SignUp2({Key? key}) : super(key: key);
@@ -114,6 +115,14 @@ class _SignUp2State extends State<SignUp2> {
                     Provider.of<AuthProvider>(context, listen: false)
                         .setUser(userObj);
                     auth.signUpState = 3;
+
+                    //..........................................................
+                    //var admin = FirebaseAdmin.instance.initializeApp();
+                    //var number=admin.auth().getUserByPhoneNumber(auth.phoneNumController.text.trim());
+                    //if (number!=""){
+                    //  auth.signUpState = 3;
+                    //}
+                    //..........................................................
                   }
                 },
               )

@@ -105,6 +105,11 @@ class _SignUp1State extends State<SignUp1> {
                               String smsCode = 'xxxx';
                               auth.verificationId = verificationId;
                               print("Verification Id = ${verificationId}");
+                              // Create a PhoneAuthCredential with the code
+                              PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: verificationId, smsCode: smsCode);
+
+                              // Sign the user in (or link) with the credential
+                              await _auth.signInWithCredential(credential);
                             },
                             codeAutoRetrievalTimeout: (String resendToken) {},
                             timeout: const Duration(seconds: 60),

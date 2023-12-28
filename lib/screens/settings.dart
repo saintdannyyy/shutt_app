@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shutt_app/styles/colors.dart';
-import 'package:shutt_app/widgets/NavigationDrawer.dart';
+import 'package:shutt_app/widgets/NavigationDrawer.dart' as nav;
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
@@ -18,7 +18,7 @@ class _SettingsState extends State<Settings> {
         backgroundColor: Colors.transparent,
         iconTheme: const IconThemeData(color: appColors.darkGreen),
       ),
-      drawer: const NavigationDrawer(),
+      drawer: const nav.NavigationDrawer(),
       body: const Center(
         child: Text("Settings Screen"),
       ),

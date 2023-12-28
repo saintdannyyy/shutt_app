@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shutt_app/styles/colors.dart';
-import 'package:shutt_app/widgets/NavigationDrawer.dart';
+import 'package:shutt_app/widgets/NavigationDrawer.dart' as nav;
 import 'package:url_launcher/url_launcher.dart';
 
 class About extends StatefulWidget {
@@ -22,7 +22,7 @@ class _SettingsState extends State<About> {
           backgroundColor: Colors.transparent,
           iconTheme: const IconThemeData(color: appColors.green),
         ),
-        drawer: const NavigationDrawer(),
+        drawer: const nav.NavigationDrawer(),
         body: SingleChildScrollView(
           child: SafeArea(
             child: Padding(

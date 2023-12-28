@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:shutt_app/providers/mapProvider.dart';
 import 'package:shutt_app/styles/colors.dart';
-import 'package:shutt_app/widgets/NavigationDrawer.dart';
+import 'package:shutt_app/widgets/NavigationDrawer.dart' as nav;
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:shutt_app/widgets/rideInfo1.dart';
 import 'package:shutt_app/widgets/rideInfo2.dart';
@@ -123,7 +123,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const NavigationDrawer(),
+      drawer: const nav.NavigationDrawer(),
       key: scaffoldKey,
       body: Consumer<MapProvider>(
         builder: (context, map, child) => Stack(
@@ -226,7 +226,7 @@ class _HomeState extends State<Home> {
                                     promptText: "Arrival time:",
                                     promptValue:
                                         "${map.timeToPickUp.toString()} mins",
-                                    price: 1.50,
+                                    price: 3.00,
                                     pickUpPointText:
                                         map.pickupPoint?.name ?? "",
                                     dropOffPointText:
