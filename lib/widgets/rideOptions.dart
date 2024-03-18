@@ -2,6 +2,7 @@ import 'package:awesome_icons/awesome_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shutt_app/providers/mapProvider.dart';
+import 'package:shutt_app/screens/rides/private_ride_select.dart';
 import 'package:shutt_app/styles/colors.dart';
 import 'package:shutt_app/widgets/customTextField2.dart';
 import 'package:shutt_app/screens/locationSet.dart';
@@ -30,9 +31,12 @@ class RideOptions extends StatelessWidget {
                 padding: const EdgeInsets.all(16),
                 width: MediaQuery.of(context).size.width,
                 decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(2))),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(2),
+                  ),
+                ),
                 // color: appColors.appWhite,
-                child: Container(
+                child: SizedBox(
                   width: MediaQuery.of(context).size.width - 64,
                   child: Column(
                     children: [
@@ -41,9 +45,11 @@ class RideOptions extends StatelessWidget {
                           Provider.of<MapProvider>(context, listen: false)
                               .locationTextState = 'pickUp';
                           Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const LocationSet()));
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const LocationSet(),
+                            ),
+                          );
                         },
                         textIcon: FontAwesomeIcons.mapMarkerAlt,
                         textController: pickupController,
@@ -67,6 +73,18 @@ class RideOptions extends StatelessWidget {
                         readOnly: true,
                         hintText: "Select drop off point",
                       ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      BookPrivateButton(
+                        callback: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const PrivateRideSelect(),
+                              ));
+                        },
+                      )
                     ],
                   ),
                 )),
@@ -86,10 +104,10 @@ class RideOptions extends StatelessWidget {
                         backgroundColor:
                             MaterialStateProperty.all(appColors.appWhite)),
                     onPressed: () {},
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                    child: const Padding(
+                      padding: EdgeInsets.all(8.0),
                       child: Row(
-                        children: const [
+                        children: [
                           Icon(
                             FontAwesomeIcons.clock,
                             color: appColors.green,
@@ -144,21 +162,21 @@ class RideOptions extends StatelessWidget {
           const SizedBox(
             height: 4,
           ),
-          Material(
+          const Material(
             elevation: 1,
             color: appColors.appWhite,
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(16.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text("Fare:",
+                  Text("Fare:",
                       style: TextStyle(
                           color: appColors.green,
                           fontWeight: FontWeight.bold,
                           fontSize: 18)),
                   Row(
-                    children: const [
+                    children: [
                       Text("GHC",
                           style: TextStyle(
                               color: appColors.textBlack,
@@ -167,9 +185,13 @@ class RideOptions extends StatelessWidget {
                       SizedBox(
                         width: 8,
                       ),
-                      Text("-- --",
-                          style: TextStyle(
-                              color: appColors.textGrey, fontSize: 18)),
+                      Text(
+                        "-- --",
+                        style: TextStyle(
+                          color: appColors.textGrey,
+                          fontSize: 18,
+                        ),
+                      ),
                     ],
                   )
                 ],
@@ -177,6 +199,34 @@ class RideOptions extends StatelessWidget {
             ),
           )
         ],
+      ),
+    );
+  }
+}
+
+class BookPrivateButton extends StatelessWidget {
+  final VoidCallback callback;
+  const BookPrivateButton({Key? key, required this.callback}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: callback,
+      child: Container(
+        height: 50,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: appColors.green,
+          borderRadius: BorderRadius.circular(5),
+        ),
+        child: const Center(
+          child: Text(
+            "Book private rides",
+            style: TextStyle(
+              color: appColors.appWhite,
+            ),
+          ),
+        ),
       ),
     );
   }

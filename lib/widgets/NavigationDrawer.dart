@@ -5,10 +5,7 @@ import 'package:shutt_app/providers/authProvider.dart';
 import 'package:shutt_app/screens/about.dart';
 import 'package:shutt_app/screens/authWrapper.dart';
 import 'package:shutt_app/screens/rideHistory.dart';
-import 'package:shutt_app/screens/support.dart';
 import 'package:shutt_app/styles/colors.dart';
-import 'package:shutt_app/screens/profile.dart';
-import 'package:shutt_app/screens/settings.dart';
 import 'package:shutt_app/screens/home.dart';
 import 'package:provider/provider.dart';
 

@@ -1,7 +1,6 @@
 import 'package:awesome_icons/awesome_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:shutt_app/providers/authProvider.dart';
-import 'package:shutt_app/screens/signUp2.dart';
 import 'package:shutt_app/styles/colors.dart';
 import 'package:shutt_app/widgets/greenButton.dart';
 import 'package:shutt_app/widgets/headingText.dart';
@@ -9,7 +8,6 @@ import 'package:shutt_app/widgets/customTextField.dart';
 import 'package:provider/provider.dart';
 import 'package:shutt_app/services/authService.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:shutt_app/models/User.dart';
 
 import '../providers/mapProvider.dart';
 
@@ -23,7 +21,6 @@ class SignUp1 extends StatefulWidget {
 class _SignUp1State extends State<SignUp1> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
@@ -166,10 +163,10 @@ class _SignUp1State extends State<SignUp1> {
                             onPressed: () async {
                               await context.read<AuthService>().googleLogin();
                             },
-                            child: Row(
+                            child:const Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
-                              children: const [
+                              children:  [
                                 Icon(
                                   FontAwesomeIcons.google,
                                   color: appColors.lightGreen,

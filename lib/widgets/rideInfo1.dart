@@ -27,7 +27,7 @@ class RideInfo1 extends StatelessWidget {
       padding: const EdgeInsets.only(right: 16.0, bottom: 16, left: 16),
       child: Material(
         color: appColors.appWhite,
-        borderRadius: BorderRadius.all(Radius.circular(5)),
+        borderRadius: const BorderRadius.all(Radius.circular(5)),
         elevation: 2,
         child: Padding(
           padding: const EdgeInsets.all(16.0),

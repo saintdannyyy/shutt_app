@@ -4,11 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:shutt_app/providers/mapProvider.dart';
 import 'package:shutt_app/screens/homeWrapper.dart';
 import 'package:shutt_app/screens/signUp1.dart';
-import 'package:shutt_app/screens/home.dart';
 import 'package:shutt_app/screens/signUp2.dart';
 import 'package:shutt_app/screens/signUp3.dart';
-import 'package:shutt_app/screens/signUpWrapper.dart';
-import 'package:shutt_app/services/authService.dart';
 
 import '../providers/authProvider.dart';
 
