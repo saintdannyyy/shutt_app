@@ -27,7 +27,7 @@ class _SignUp1State extends State<SignUp1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Consumer<custom_auth.AuthProvider>(
+      body: Consumer<auth.AuthProvider>(
         builder: (context, auth, child) => Padding(
           padding: const EdgeInsets.all(24.0),
           child: Column(
@@ -59,7 +59,7 @@ class _SignUp1State extends State<SignUp1> {
                       Flexible(
                         child: CustomTextField(
                             onPressed: () {},
-                            textController: custom_auth.phoneNumController,
+                            textController: auth.phoneNumController,
                             hintText: "— —  — — —  — — — —",
                             keyboardType: TextInputType.number),
                       ),
@@ -72,9 +72,9 @@ class _SignUp1State extends State<SignUp1> {
                     label: "Sign In",
                     onPressed: () async {
                       try {
-                        if (custom_auth.phoneNumController.text.trim() ==
+                        if (auth.phoneNumController.text.trim() ==
                             "107285210") {
-                          custom_auth.setSignUpComplete(true);
+                          auth.setSignUpComplete(true);
                           Provider.of<MapProvider>(context, listen: false)
                               .userID = "fgDwVf05CrUA5SlHrrNloY82vrg1";
                         } else {
@@ -82,7 +82,7 @@ class _SignUp1State extends State<SignUp1> {
                           await _auth
                               .verifyPhoneNumber(
                             phoneNumber:
-                                "+233${custom_auth.phoneNumController.text.trim()}",
+                                "+233${auth.phoneNumController.text.trim()}",
                             verificationCompleted:
                                 (PhoneAuthCredential credential) async {
                               UserCredential value =
@@ -100,7 +100,7 @@ class _SignUp1State extends State<SignUp1> {
                             codeSent: (String verificationId,
                                 int? resendToken) async {
                               String smsCode = 'xxxx';
-                              custom_auth.verificationId = verificationId;
+                              auth.verificationId = verificationId;
                               print("Verification Id = ${verificationId}");
                               // Create a PhoneAuthCredential with the code
                               PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: verificationId, smsCode: smsCode);
@@ -112,7 +112,7 @@ class _SignUp1State extends State<SignUp1> {
                             timeout: const Duration(seconds: 60),
                           )
                               .then((value) {
-                            custom_auth.signUpState = 2;
+                            auth.signUpState = 2;
                           });
                         }
                       } catch (e) {
