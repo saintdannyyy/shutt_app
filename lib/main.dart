@@ -2,10 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 
 // Providers
-import 'package:shutt_app/providers/authProvider.dart';
+import 'package:shutt_app/providers/authProvider.dart' as custom_auth;
 import 'package:shutt_app/providers/mapProvider.dart';
 import 'package:shutt_app/screens/authWrapper.dart';
 
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
         Provider<dbService>(
           create: (_) => dbService(),
         ),
-        ChangeNotifierProvider(create: (_) => AuthProvider()),
+        ChangeNotifierProvider(create: (_) => custom_auth.AuthProvider()),
         ChangeNotifierProvider(create: (context) => MapProvider())
       ],
       child: MaterialApp(

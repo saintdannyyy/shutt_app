@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:shutt_app/providers/authProvider.dart';
+import 'package:shutt_app/providers/authProvider.dart' as custom_auth;
 import 'package:shutt_app/screens/signUp3.dart';
 import 'package:shutt_app/styles/colors.dart';
 import 'package:shutt_app/widgets/customTextField.dart';
@@ -8,8 +8,10 @@ import 'package:shutt_app/widgets/greenButton.dart';
 import 'package:shutt_app/widgets/headingText.dart';
 import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
-import 'package:shutt_app/services/authService.dart';
+import 'package:shutt_app/services/authService.dart' as auth;
 import 'package:firebase_admin/firebase_admin.dart';
+
+import '../widgets/headingText.dart';
 
 class SignUp2 extends StatefulWidget {
   const SignUp2({Key? key}) : super(key: key);
@@ -30,7 +32,7 @@ class _SignUp2State extends State<SignUp2> {
 
   @override
   Widget build(BuildContext context) {
-    final authHandler = Provider.of<AuthProvider>(context, listen: false);
+    final authHandler = Provider.of<custom_auth.AuthProvider>(context, listen: false);
 
     return Scaffold(
       appBar: AppBar(
@@ -45,7 +47,7 @@ class _SignUp2State extends State<SignUp2> {
               authHandler.signUpState = 1;
             },
           )),
-      body: Consumer<AuthProvider>(
+      body: Consumer<custom_auth.AuthProvider>(
         builder: (context, auth, child) => Padding(
           padding: const EdgeInsets.only(left: 16, right: 16, bottom: 24),
           child: Column(
@@ -67,7 +69,7 @@ class _SignUp2State extends State<SignUp2> {
                     style: TextStyle(color: appColors.textGrey),
                   ),
                   Text(
-                    "+233 ${auth.phoneNumController.text.substring(0, 2)} ${auth.phoneNumController.text.substring(2, 5)} ${auth.phoneNumController.text.trim().substring(5)}",
+                    "+233 ${custom_auth.phoneNumController.text.substring(0, 2)} ${custom_auth.phoneNumController.text.substring(2, 5)} ${custom_auth.phoneNumController.text.trim().substring(5)}",
                     textAlign: TextAlign.left,
                     style: TextStyle(color: appColors.darkGreen),
                   ),
@@ -108,11 +110,11 @@ class _SignUp2State extends State<SignUp2> {
                 label: "Next",
                 onPressed:() async {
                   if(otpPin!=""){
-                    print(auth.phoneNumController.text.trim());
+                    print(custom_auth.phoneNumController.text.trim());
                     User userObj = await context
                         .read<AuthService>()
-                        .signInWithPhone(auth.verificationId, otpPin);
-                    Provider.of<AuthProvider>(context, listen: false)
+                        .signInWithPhone(ccustom_auth.verificationId, otpPin);
+                    Provider.of<custom_auth.AuthProvider>(context, listen: false)
                         .setUser(userObj);
                     auth.signUpState = 3;
 

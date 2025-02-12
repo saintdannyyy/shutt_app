@@ -7,7 +7,7 @@ import 'package:shutt_app/screens/signUp1.dart';
 import 'package:shutt_app/screens/signUp2.dart';
 import 'package:shutt_app/screens/signUp3.dart';
 
-import '../providers/authProvider.dart';
+import '../providers/authProvider.dart' as custom_auth;
 
 class AuthWrapper extends StatelessWidget {
   const AuthWrapper({Key? key}) : super(key: key);
@@ -16,8 +16,8 @@ class AuthWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     final firebaseUser = context.watch<User?>();
 
-    bool signUpComplete = Provider.of<AuthProvider>(context).signUpComplete;
-    int signUpState = Provider.of<AuthProvider>(context).signUpState;
+    bool signUpComplete = Provider.of<custom_auth.AuthProvider>(context).signUpComplete;
+    int signUpState = Provider.of<custom_auth.AuthProvider>(context).signUpState;
 
     if (firebaseUser != null &&
             firebaseUser.displayName != null &&

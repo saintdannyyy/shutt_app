@@ -4,7 +4,7 @@ import 'package:shutt_app/providers/mapProvider.dart';
 import 'package:shutt_app/services/dbService.dart';
 import 'package:shutt_app/styles/colors.dart';
 import 'package:shutt_app/widgets/greenButton.dart';
-import 'package:shutt_app/widgets/HeadingText.dart';
+import 'package:shutt_app/widgets/headingText.dart' as headingText;
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class RateRide extends StatefulWidget {
@@ -47,7 +47,7 @@ class _RateRideState extends State<RateRide> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const HeadingText(
+                    const headingText.HeadingText(
                       text: "How was your Trip?",
                       alignment: TextAlign.center,
                     ),

@@ -1,7 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_custom_auth/firebase_auth.dart' as auth;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shutt_app/providers/authProvider.dart';
+import 'package:shutt_app/providers/authProvider.dart' as custom_auth;
 import 'package:shutt_app/screens/authWrapper.dart';
 import 'package:shutt_app/widgets/customTextField.dart';
 import 'package:shutt_app/widgets/greenButton.dart';
@@ -36,7 +36,7 @@ class _SignUp3State extends State<SignUp3> {
           )),
       body: Padding(
         padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
-        child: Consumer<AuthProvider>(
+        child: Consumer<custom_auth.AuthProvider>(
           builder: (context, auth, child) => Column(
             children: [
               Expanded(
@@ -55,21 +55,21 @@ class _SignUp3State extends State<SignUp3> {
                   ),
                   CustomTextField(
                       onPressed: () {},
-                      textController: auth.firstNameController,
+                      textController: custom_auth.firstNameController,
                       hintText: "First Name"),
                   const SizedBox(
                     height: 12,
                   ),
                   CustomTextField(
                       onPressed: () {},
-                      textController: auth.lastNameController,
+                      textController: custom_auth.lastNameController,
                       hintText: "Last Name"),
                   const SizedBox(
                     height: 12,
                   ),
                   CustomTextField(
                     onPressed: () {},
-                    textController: auth.emailController,
+                    textController: custom_auth.emailController,
                     hintText: "Email",
                     keyboardType: TextInputType.emailAddress,
                   ),
@@ -83,15 +83,15 @@ class _SignUp3State extends State<SignUp3> {
                 onPressed: () async {
                   // await auth.editDetails();
 
-                  if (auth.firstNameController.text.trim() != "" &&
-                      auth.lastNameController.text.trim() != "" &&
-                      auth.emailController.text.trim() != "") {
-                    await context.read<AuthService>().editCredentials(
-                        firstName: auth.firstNameController.text.trim(),
-                        lastName: auth.lastNameController.text.trim(),
-                        email: auth.emailController.text.trim());
-                    auth.setSignUpComplete(true);
-                    auth.signUpState = 1;
+                  if (custom_auth.firstNameController.text.trim() != "" &&
+                      custom_auth.lastNameController.text.trim() != "" &&
+                      custom_auth = auth.emailController.text.trim() != "") {
+                      await context.read<AuthService>().editCredentials(
+                        firstName: custom_auth.firstNameController.text.trim(),
+                        lastName: custom_auth.lastNameController.text.trim(),
+                        email: custom_auth.emailController.text.trim());
+                    custom_auth.setSignUpComplete(true);
+                    custom_auth.signUpState = 1;
                   } else {
                     var snackBar = const SnackBar(
                         content: Text("All fields must be filled correctly"));
