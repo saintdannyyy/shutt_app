@@ -31,10 +31,10 @@ jobs:
         run: cd android
 
       - name: Upgrade Dependencies
-        run: ./gradlew clean
+        run: gradlew clean
 
       - name: Upgrade Dependencies
-        run: ./gradlew build
+        run: gradlew build
 
       - name: Upgrade Dependencies
         run: flutter pub upgrade
