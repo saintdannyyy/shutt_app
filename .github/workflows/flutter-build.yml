@@ -27,6 +27,15 @@ jobs:
       - name: Get Dependencies
         run: flutter pub get
 
+      - name: go to android
+        run: cd android
+
+      - name: Upgrade Dependencies
+        run: ./gradlew clean
+
+      - name: Upgrade Dependencies
+        run: ./gradlew build
+
       - name: Upgrade Dependencies
         run: flutter pub upgrade
 
