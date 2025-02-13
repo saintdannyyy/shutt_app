@@ -1,3 +1,10 @@
+buildscript {
+    ext.kotlin_version = '1.8.10'
+    repositories {
+        google()
+        mavenCentral()
+    }
+
 plugins {
     id 'com.android.application' version '8.1.0' apply false
     id 'com.android.library' version '8.1.0' apply false
@@ -5,12 +12,6 @@ plugins {
 }
 
 
-buildscript {
-    ext.kotlin_version = '1.8.10'
-    repositories {
-        google()
-        mavenCentral()
-    }
 
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.0'
