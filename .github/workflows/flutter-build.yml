@@ -22,5 +22,5 @@ jobs:
       run: |
         cd android
         chmod +x gradlew
-        ./android/gradlew clean
-        ./android/gradlew assembleRelease
+        ./gradle wrapper clean
+        ./gradle wrapper assembleRelease
