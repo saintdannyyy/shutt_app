@@ -6,9 +6,10 @@ import 'package:shutt_app/widgets/greenButton.dart';
 import 'package:shutt_app/widgets/headingText.dart';
 import 'package:shutt_app/widgets/customTextField.dart';
 import 'package:provider/provider.dart';
-import 'package:shutt_app/services/authService.dart' as custom_auth;
+import 'package:shutt_app/services/authService.dart';
 //import 'package:firebase_auth/firebase_auth.dart' as auth;
 
+import '../providers/authProvider.dart';
 import '../providers/mapProvider.dart';
 
 class SignUp1 extends StatefulWidget {
@@ -27,7 +28,7 @@ class _SignUp1State extends State<SignUp1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Consumer<auth.AuthProvider>(
+      body: Consumer<AuthProvider>(
         builder: (context, auth, child) => Padding(
           padding: const EdgeInsets.all(24.0),
           child: Column(
@@ -59,7 +60,7 @@ class _SignUp1State extends State<SignUp1> {
                       Flexible(
                         child: CustomTextField(
                             onPressed: () {},
-                            textController: auth.phoneNumController,
+                            textController: phoneNumController,
                             hintText: "— —  — — —  — — — —",
                             keyboardType: TextInputType.number),
                       ),
@@ -72,9 +73,9 @@ class _SignUp1State extends State<SignUp1> {
                     label: "Sign In",
                     onPressed: () async {
                       try {
-                        if (auth.phoneNumController.text.trim() ==
+                        if (phoneNumController.text.trim() ==
                             "107285210") {
-                          auth.setSignUpComplete(true);
+                          setSignUpComplete(true);
                           Provider.of<MapProvider>(context, listen: false)
                               .userID = "fgDwVf05CrUA5SlHrrNloY82vrg1";
                         } else {
@@ -82,7 +83,7 @@ class _SignUp1State extends State<SignUp1> {
                           await _auth
                               .verifyPhoneNumber(
                             phoneNumber:
-                                "+233${auth.phoneNumController.text.trim()}",
+                                "+233${phoneNumController.text.trim()}",
                             verificationCompleted:
                                 (PhoneAuthCredential credential) async {
                               UserCredential value =
@@ -100,7 +101,7 @@ class _SignUp1State extends State<SignUp1> {
                             codeSent: (String verificationId,
                                 int? resendToken) async {
                               String smsCode = 'xxxx';
-                              auth.verificationId = verificationId;
+                              AuthProvider.verificationId = verificationId;
                               print("Verification Id = ${verificationId}");
                               // Create a PhoneAuthCredential with the code
                               PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: verificationId, smsCode: smsCode);
@@ -112,7 +113,7 @@ class _SignUp1State extends State<SignUp1> {
                             timeout: const Duration(seconds: 60),
                           )
                               .then((value) {
-                            auth.signUpState = 2;
+                                signUpState = 2;
                           });
                         }
                       } catch (e) {

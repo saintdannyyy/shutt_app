@@ -1,7 +1,7 @@
 //import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shutt_app/providers/authProvider.dart' as custom_auth;
+import 'package:shutt_app/providers/authProvider.dart';
 import 'package:shutt_app/screens/authWrapper.dart';
 import 'package:shutt_app/widgets/customTextField.dart';
 import 'package:shutt_app/widgets/greenButton.dart';
