@@ -13,7 +13,7 @@ jobs:
     - name: Set up Flutter
       uses: subosito/flutter-action@v2
       with:
-        flutter-version: '3.0.0' # Specify the Flutter version you need
+        flutter-version: '3.3.0' # Specify the Flutter version you need
 
     - name: Install dependencies
       run: flutter pub get
@@ -21,5 +21,6 @@ jobs:
     - name: Build APK
       run: |
         cd android
+        chmod +x gradlew
         ./gradlew clean
         ./gradlew assembleRelease
