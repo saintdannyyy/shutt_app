@@ -1,40 +1,25 @@
 name: Build Flutter APK
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+on: [push, pull_request]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Setup Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.22.0'  # Change to your Flutter version if needed
+    - name: Set up Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.0.0' # Specify the Flutter version you need
 
-      - name: Flutter Clean
-        run: flutter clean
+    - name: Install dependencies
+      run: flutter pub get
 
-      - name: Get Dependencies
-        run: flutter pub get
-
-      - name: Upgrade Dependencies
-        run: flutter pub upgrade
-
-      - name: Build APK
-        run: flutter build apk --split-per-abi
-
-      - name: Upload APK Artifact
-        uses: actions/upload-artifact@v4  # Use v4 since v3 is deprecated
-        with:
-          name: release-apk
-          path: build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
+    - name: Build APK
+      run: |
+        cd android
+        ./gradlew clean
+        ./gradlew assembleRelease
