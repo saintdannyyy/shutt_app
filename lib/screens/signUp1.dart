@@ -7,7 +7,7 @@ import 'package:shutt_app/widgets/headingText.dart';
 import 'package:shutt_app/widgets/customTextField.dart';
 import 'package:provider/provider.dart';
 import 'package:shutt_app/services/authService.dart' as custom_auth;
-import 'package:firebase_auth/firebase_auth.dart' as auth;
+//import 'package:firebase_auth/firebase_auth.dart' as auth;
 
 import '../providers/mapProvider.dart';
 

@@ -1,6 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:shutt_app/providers/authProvider.dart' as custom_auth;
+import 'package:shutt_app/providers/authProvider.dart';
 import 'package:shutt_app/screens/signUp3.dart';
 import 'package:shutt_app/styles/colors.dart';
 import 'package:shutt_app/widgets/customTextField.dart';
@@ -8,7 +8,7 @@ import 'package:shutt_app/widgets/greenButton.dart';
 import 'package:shutt_app/widgets/headingText.dart';
 import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
-import 'package:shutt_app/services/authService.dart' as auth;
+import 'package:shutt_app/services/authService.dart';
 import 'package:firebase_admin/firebase_admin.dart';
 
 import '../widgets/headingText.dart';
